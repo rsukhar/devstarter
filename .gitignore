@@ -1,0 +1,24 @@
+# General files
+.idea
+.vscode
+.vagrant
+*.db
+*.log
+*.cache
+.DS_Store
+/logs/
+/cache/
+uploads
+
+# Configs
+config/database.php
+config/security.php
+
+# User files
+www/uploads
+
+#r Robots.txt
+www/robots.txt
+
+www/maintenance.html.tpl
+www/maintenance.html
