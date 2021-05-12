@@ -127,8 +127,8 @@ sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr
 # XDebug
 cat << 'EOF' | sudo tee /etc/php/8.0/mods-available/xdebug.ini
 zend_extension=xdebug.so
-xdebug.remote_enable = on
-xdebug.remote_connect_back = on
+xdebug.mode = debug
+xdebug.discover_client_host = on
 xdebug.idekey = "vagrant"
 EOF
 

@@ -55,7 +55,7 @@ class URL extends Kohana_URL {
 
 		if (Kohana::$environment === 40)
 		{
-			$domain = 'vsekolesa.local';
+			$domain = 'devstarter.local';
 		}
 
 		return ($with_protocol ? URL::protocol().'//' : '').$domain;

@@ -13,14 +13,14 @@
 				<a href="/" class="b-logo">
 					<picture>
 						<source media="(max-width: 599px)" srcset="/assets/img/logo_mobile.svg">
-						<img src="/assets/img/logo.svg" width="170" alt="ВсеКолёса" />
+						<img src="/assets/img/logo.svg" width="170" alt="DevStarter" />
 					</picture>
 				</a>
 				<br><br>
 
 				<form class="g-form style_small" method="post">
 
-					<h3>Вход для партнеров</h3>
+					<h3>Авторизация</h3>
 
 					<div class="g-form-row type_text <?php echo (isset($errors['login']) ? 'check_wrong' : '') ?>">
 						<label for="sign_in_login" class="g-form-row-label">Email или Логин</label>
@@ -36,7 +36,6 @@
 						<div class="g-btn">Войти</div>
 					</div>
 
-					<p>Если у Вас ещё нет учетной записи партнера, Вы можете <a href="/partner/">отправить заявку на подключение здесь</a>.</p>
 				</form>
 
 			</div>

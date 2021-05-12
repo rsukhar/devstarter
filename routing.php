@@ -50,29 +50,14 @@ Route::set('modules-assets', 'assets/<file>', array(
 	'action' => 'handle',
 ));
 
-Route::set('admin', 'admin(/<controller>(/<id>)(/<action>(/<param1>)(/<param2>)))', [
+Route::set('admin-models', 'admin/<controller>s(/<id>)(/<action>)', [
 	'controller' => 'student',
-	'action' => '[a-z_]+',
 	'id' => '[0-9]+',
-	'param1' => '[0-9a-zA-Z\d\.\_\-]+',
-	'param2' => '[0-9a-zA-Z\d\.\_\-]+',
-])->filter(function ($route, $params, $request) {
-	if ($params['controller'] === 'Student')
-	{
-		if (isset($params['id']) AND ! in_array($params['action'], ['index']))
-		{
-			$params = array_merge($params, ['tab' => $params['action']]);
-		}
-		$params['action'] = 'index';
-	}
-
-	return array_merge($params, [
-		'directory' => 'Admin',
-	]);
-})->defaults([
+	'action' => 'create|update',
+])->defaults([
 	'directory' => 'Admin',
-	'controller' => 'Content',
-	'action' => 'index',
+	'controller' => 'Student',
+	'action' => 'list',
 ]);
 
 

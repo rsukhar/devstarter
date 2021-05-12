@@ -23,7 +23,7 @@ class Controller_Devtests extends Controller_Template {
 
 	public function action_test()
 	{
-
+		Auth::instance()->login('admin', 'admin', TRUE);
 	}
 
 	public function after()

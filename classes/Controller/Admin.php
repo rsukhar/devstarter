@@ -17,7 +17,7 @@ class Controller_Admin extends Controller_Native {
 		}
 		parent::before();
 
-		$this->assets = Assets::instance('admin');
+		$this->assets = Assets::instance();
 		$this->assets->add('base');
 		$this->template->menu_items = [
 			'/admin/students/' => 'Ученики',

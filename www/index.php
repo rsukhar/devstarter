@@ -60,7 +60,7 @@ require SYSPATH.'classes/Kohana/Core'.EXT;
 require SYSPATH.'classes/Kohana'.EXT;
 
 date_default_timezone_set('Europe/Moscow');
-setlocale(LC_ALL | LC_NUMERIC, 'ru_RU.utf8');
+setlocale(LC_ALL, 'ru_RU.utf8');
 spl_autoload_register(['Kohana', 'auto_load']);
 ini_set('unserialize_callback_func', 'spl_autoload_call');
 mb_substitute_character('none');

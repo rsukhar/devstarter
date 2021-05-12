@@ -11,7 +11,6 @@ CREATE TABLE `users` (
   `role` enum('customer','manager','admin','owner') NOT NULL DEFAULT 'customer',
   `status` enum('inactive','active','blocked') NOT NULL DEFAULT 'inactive',
   `meta` text,
-  `access` text,
   `logins` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `last_login` int(10) DEFAULT NULL,
   `created` datetime DEFAULT NULL COMMENT 'User creation date',

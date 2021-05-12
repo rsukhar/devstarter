@@ -5,7 +5,7 @@ class Controller_Native extends Controller_Template {
 	/**
 	 * @var View General template
 	 */
-	public $template = 'template';
+	public $template = 'admin/template';
 
 	/**
 	 * @var Assets Instance of Assets class
@@ -57,7 +57,7 @@ class Controller_Native extends Controller_Template {
 	{
 		parent::before();
 
-		$this->assets = Assets::instance('admin');
+		$this->assets = Assets::instance();
 		$this->assets->add('base');
 		$this->template->body_classes = '';
 

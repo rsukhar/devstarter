@@ -4,7 +4,7 @@
 $app_version = '1.1';
 
 return [
-	'admin' => [
+	'default' => [
 		'jquery' => [
 			'core' => [
 				'file' => 'assets/admin/vendor/jquery/jquery-3.5.1.min.js',
