@@ -16,7 +16,7 @@ sudo service php8.0-fpm restart
 
 # Making sure that we always use the same latest autoprefixer/uglify rules to avoid collisions
 sudo apt-get install -y nodejs
-sudo npm install -g --no-progress less@2.7.2 less-plugin-autoprefix less-plugin-clean-css
+sudo npm install -g --no-progress less@4.1.1 less-plugin-autoprefix less-plugin-clean-css
 sudo npm remove uglify-js -g
 sudo npm install uglify-es -g
 

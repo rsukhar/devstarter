@@ -30,9 +30,9 @@ Route::set('api', 'api/<controller>/<action>(/<param1>(/<param2>))', [
 
 // Native Auth
 Route::set('auth', '<action>', [
-	'action' => 'sign_in|sign_out|sign_up|verify_email|request_password_reset|reset_password|complete_sign_up',
+	'action' => 'sign_in|sign_out',
 ])->defaults([
-	'directory' => 'Native',
+	'directory' => 'Admin',
 	'controller' => 'Auth',
 ]);
 
@@ -77,11 +77,11 @@ Route::set('admin', 'admin(/<controller>(/<id>)(/<action>(/<param1>)(/<param2>))
 
 
 // Для всех несуществующих страниц в тестовых целях выводим 404 ошибку
-Route::set('node', '<url>', [
+Route::set('index', '<url>', [
 	'url' => '.*?',
 ])->defaults([
-	'directory' => 'Native',
-	'action' => '404',
+	'controller' => 'Native',
+	'action' => 'index',
 ]);
 
 
