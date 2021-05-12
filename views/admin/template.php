@@ -4,7 +4,7 @@
  *
  * @var array $menu_items [{url} => {title}, ...]
  *
- * @var array $subheader_items [{url} => {title}, ...]
+ * @var bool $hide_header ?
  *
  * @var null|string $active_menu_item
  * @var null|string $submenu_active_item
@@ -33,36 +33,36 @@ $menu_items = $menu_items ?? [];
 <body class="b-body<?php echo $body_classes ?>">
 <div class="b-canvas">
 
-	<header class="b-header">
-		<div class="b-header-h">
-			<a href="/" class="b-logo">DevStarter</a>
+	<?php if ( ! isset($hide_header) OR ! $hide_header): ?>
+		<header class="b-header">
+			<div class="b-header-h">
+				<a href="/" class="b-logo">DevStarter</a>
 
-			<div class="b-menu">
+				<div class="b-menu">
+					<?php if (isset($menu_items) AND ! empty($menu_items)): ?>
+						<?php echo View::factory('admin/helpers/dropdown_menu', [
+							'items' => $menu_items,
+						]) ?>
+					<?php endif; ?>
+				</div>
 
-				<?php if (isset($menu_items) AND ! empty($menu_items)): ?>
-					<?php echo View::factory('admin/helpers/dropdown_menu', [
-						'items' => $menu_items,
-					]) ?>
+				<?php if (isset($user)): ?>
+					<div class="b-menu pos_right">
+						<div class="b-menu-item has_dropdown">
+							<a href="/admin/users/<?php echo HTML::chars($user->username) ?>/">
+								<span><?php echo ($user->role === 'customer') ? HTML::chars($user->username) : HTML::chars($user->full_name) ?></span>
+							</a>
+							<div class="b-menu-list">
+								<a href="/admin/users/<?php echo HTML::chars($user->username) ?>"><span>Аккаунт</span></a>
+								<a href="/sign_out/"><span>Выход</span></a>
+							</div>
+						</div>
+					</div>
 				<?php endif; ?>
 
 			</div>
-
-			<div class="b-menu pos_right">
-
-				<div class="b-menu-item has_dropdown">
-					<a href="/admin/users/<?php echo HTML::chars($user->username) ?>/">
-						<span><?php echo ($user->role === 'customer') ? HTML::chars($user->username) : HTML::chars($user->full_name) ?></span>
-					</a>
-					<div class="b-menu-list">
-						<a href="/admin/users/<?php echo HTML::chars($user->username) ?>"><span>Аккаунт</span></a>
-						<a href="/sign_out/"><span>Выход</span></a>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-	</header>
+		</header>
+	<?php endif; ?>
 
 	<?php echo (isset($subheader)) ? $subheader : '' ?>
 

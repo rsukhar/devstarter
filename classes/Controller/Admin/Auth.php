@@ -13,7 +13,7 @@ class Controller_Admin_Auth extends Controller_Admin {
 	public function action_sign_in()
 	{
 		$this->template->title = 'Авторизация — DevStarter';
-		$this->template->header_exists = FALSE;
+		$this->template->hide_header = TRUE;
 		$this->template->content->set_filename('admin/auth/sign_in');
 		$this->assets->add('auth.sign_in');
 		$this->template->body_classes .= 'auth-sign_in style_alternate';

@@ -22,5 +22,8 @@ sudo npm install uglify-es -g
 
 # File watchers
 # Keeping the file contents here so we could edit it without full provision
-sudo chmod +x /srv/devstarter.local/.provision/file-watcher.sh
-sudo /srv/devstarter.local/.provision/file-watcher.sh &
+# sudo chmod +x /srv/devstarter.local/.provision/file-watcher.sh
+# sudo /srv/devstarter.local/.provision/file-watcher.sh &
+
+# Applying all the relevant migrations instantly
+/srv/devstarter.local/minion.php --task=migrate

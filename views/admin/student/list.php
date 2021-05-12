@@ -31,7 +31,7 @@
 							<td class="for_birthday"><?php echo date('d.m.Y', strtotime($student['birthday'])) ?></td>
 							<td class="for_phone"><?php echo HTML::chars($student['phone']) ?></td>
 							<td class="for_actions">
-								<span class="g-action type_icon action_edit"></span>
+								<a class="g-action type_icon action_edit" href="/admin/students/<?php echo $student['id'] ?>/update/"></a>
 								<span class="g-action type_icon action_delete" data-nonce="<?php echo Security::nonce('delete_student')?>"></span>
 							</td>
 						</tr>

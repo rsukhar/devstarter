@@ -8,7 +8,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(64) NOT NULL COMMENT 'Password hash',
   `full_name` varchar(150) DEFAULT NULL,
-  `role` enum('customer','manager','admin','owner') NOT NULL DEFAULT 'customer',
+  `role` enum('customer','manager','admin') NOT NULL DEFAULT 'customer',
   `status` enum('inactive','active','blocked') NOT NULL DEFAULT 'inactive',
   `meta` text,
   `logins` int(10) UNSIGNED NOT NULL DEFAULT '0',
