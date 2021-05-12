@@ -13,13 +13,8 @@ Route::set('api', 'api/<controller>/<action>(/<param1>(/<param2>))', [
 	// Student
 	if ($params['controller'] === 'Student')
 	{
-		// api/content/<action>
-		if (in_array($params['action'], ['create']))
-		{
-			return $params;
-		}
 		// api/content/<action>/<id>
-		elseif (in_array($params['action'], ['update', 'delete']) AND isset($params['param1']))
+		if (in_array($params['action'], ['delete']) AND isset($params['param1']))
 		{
 			return array_merge($params, ['id' => (int) $params['param1']]);
 		}

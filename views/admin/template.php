@@ -53,7 +53,6 @@ $menu_items = $menu_items ?? [];
 								<span><?php echo ($user->role === 'customer') ? HTML::chars($user->username) : HTML::chars($user->full_name) ?></span>
 							</a>
 							<div class="b-menu-list">
-								<a href="/admin/users/<?php echo HTML::chars($user->username) ?>"><span>Аккаунт</span></a>
 								<a href="/sign_out/"><span>Выход</span></a>
 							</div>
 						</div>

@@ -25,7 +25,7 @@
 					</thead>
 					<tbody>
 					<?php foreach ($students as $student): ?>
-						<tr>
+						<tr data-id="<?php echo HTML::chars($student['id']) ?>">
 							<td class="for_first_name"><?php echo HTML::chars($student['first_name']) ?></td>
 							<td class="for_last_name"><?php echo HTML::chars($student['last_name']) ?></td>
 							<td class="for_birthday"><?php echo date('d.m.Y', strtotime($student['birthday'])) ?></td>

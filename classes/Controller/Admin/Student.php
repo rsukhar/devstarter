@@ -8,7 +8,6 @@ class Controller_Admin_Student extends Controller_Admin {
 
 		if ( ! Auth::user_is('admin'))
 		{
-			die('here');
 			return $this->add_error('access.403');
 		}
 	}
