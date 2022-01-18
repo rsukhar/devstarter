@@ -8,7 +8,7 @@ end
 
 Vagrant.configure("2") do |config|
   # Available Boxes: https://atlas.hashicorp.com/search
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/focal64"
 
   # Virtual Machine will be available at 10.10.10.200:80
   config.vm.network "private_network", ip: "10.10.10.200"
