@@ -78,8 +78,9 @@ vagrant up
 ## Vagrant через Docker
 
 1. vagrant destroy # если была виртуальная машина
-2. docker stop $(docker ps -a -q) # остановим все рабочие контейнеры
-3. docker rm $(docker ps -a -q) # и удалим их
-4. vagrant up --provider=docker
-5. Если ошибка с сетью (Stderr: Error response from daemon: endpoint with name devstarter_default_1642513915 already exists in network vagrant_network_10.10.10.0/24
+2. В VagrantFile -> docker.volumes -> второй элемент массива указываем полный путь до проекта
+3. docker stop $(docker ps -a -q) # остановим все рабочие контейнеры
+4. docker rm $(docker ps -a -q) # и удалим их
+5. vagrant up --provider=docker
+6. Если ошибка с сетью (Stderr: Error response from daemon: endpoint with name devstarter_default_1642513915 already exists in network vagrant_network_10.10.10.0/24
    ), повторить vagrant up --provider=docker

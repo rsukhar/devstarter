@@ -75,7 +75,7 @@ Vagrant.configure("2") do |config|
     docker.privileged = true
     docker.volumes = [
         "/sys/fs/cgroup:/sys/fs/cgroup:ro",
-        "/home/sasha/www/rsukhar/devstarter:/srv/devstarter.local"
+        "/PATH:/srv/devstarter.local"
     ]
     docker.create_args = ["-p", "80:80"]
   end
