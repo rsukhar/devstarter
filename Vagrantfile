@@ -64,6 +64,23 @@ Vagrant.configure("2") do |config|
 
   end
 
+  # Provider for Docker
+  config.vm.provider :docker do |docker, override|
+    # docker network rm vagrant_network_10.10.10.0/24
+    # vagrant destroy
+    override.vm.box = nil
+    docker.image = "rofrano/vagrant-provider:ubuntu"
+    docker.remains_running = true
+    docker.has_ssh = true
+    docker.privileged = true
+    docker.volumes = [
+        "/sys/fs/cgroup:/sys/fs/cgroup:ro",
+        "/home/sasha/www/rsukhar/devstarter:/srv/devstarter.local"
+    ]
+    docker.create_args = ["-p", "80:80"]
+  end
+
+
   # TODO Use own vagrant package https://stefanwrobel.com/how-to-make-vagrant-performance-not-suck
 
   # Installing the required packages and internal workflow

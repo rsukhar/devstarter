@@ -14,6 +14,8 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password password"
 
 # Required to access to latest pear packages compatible with php8.8
+sudo apt-get update
+sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 
@@ -28,6 +30,10 @@ mkdir -p /srv/devstarter.local/cache /srv/devstarter.local/logs
 # Nginx virtual host
 sudo cp /srv/devstarter.local/.provision/default.vhost /etc/nginx/sites-available/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sudo cp /srv/devstarter.local/.provision/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+
+sudo service mysql restart
 
 # Proper database credentials
 echo 'create database `app`;' | mysql -uroot -ppassword
