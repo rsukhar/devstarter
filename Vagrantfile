@@ -8,7 +8,7 @@ end
 
 Vagrant.configure("2") do |config|
   # Available Boxes: https://atlas.hashicorp.com/search
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/focal64"
 
   # Virtual Machine will be available at 10.10.10.200:80
   config.vm.network "private_network", ip: "10.10.10.200"
@@ -63,6 +63,23 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--memory", mem]
 
   end
+
+  # Provider for Docker
+  config.vm.provider :docker do |docker, override|
+    # docker network rm vagrant_network_10.10.10.0/24
+    # vagrant destroy
+    override.vm.box = nil
+    docker.image = "rofrano/vagrant-provider:ubuntu"
+    docker.remains_running = true
+    docker.has_ssh = true
+    docker.privileged = true
+    docker.volumes = [
+        "/sys/fs/cgroup:/sys/fs/cgroup:ro",
+        "/PATH:/srv/devstarter.local"
+    ]
+    docker.create_args = ["-p", "80:80"]
+  end
+
 
   # TODO Use own vagrant package https://stefanwrobel.com/how-to-make-vagrant-performance-not-suck
 

@@ -14,11 +14,14 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password password"
 
 # Required to access to latest pear packages compatible with php8.8
+sudo apt-get update
+sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 
 # Install mysql, nginx, php-fpm, language-pack-ru (for enable locale ru_RU)
-sudo apt-get install -y -f mysql-server mysql-client nginx php-fpm php-zip php-mysql php-curl php-intl php-mbstring php-xmlrpc php-xml libhyphen0 unzip nodejs php-xdebug php-gd language-pack-ru
+sudo apt-get install -y -f mysql-server mysql-client nginx \
+      php8.0-fpm php8.0-zip php8.0-mysql php8.0-curl php8.0-intl php8.0-mbstring php8.0-xmlrpc php8.0-xml libhyphen0 unzip nodejs php8.0-xdebug php8.0-gd language-pack-ru
 
 # Required Kohana folders
 sudo rm -rf /srv/devstarter.local/cache /srv/devstarter.local/logs
@@ -27,6 +30,10 @@ mkdir -p /srv/devstarter.local/cache /srv/devstarter.local/logs
 # Nginx virtual host
 sudo cp /srv/devstarter.local/.provision/default.vhost /etc/nginx/sites-available/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sudo cp /srv/devstarter.local/.provision/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+
+sudo service mysql restart
 
 # Proper database credentials
 echo 'create database `app`;' | mysql -uroot -ppassword
